@@ -1,11 +1,19 @@
-password = list(input("Please enter a password "))
+def passwordValidator(password):
+    if len(password) < 8:
+        return False
 
-hasInt = any(char.isalnum() for char in password)
-hasStr = any(char.isalpha() for char in password)
+    letter = any(char.isalpha() for char in password)
+    digit = any(char.isdigit() for char in password)
 
-validator = hasInt and hasStr
+    return letter and digit
 
-if len(password) > 7 and validator == True:
-    print("Your password is valid")
-else:
-    print("Your password must contain at least 8 characters, and a mix of letters and numbers")
+def main():
+    password = input("Enter your password: ")
+
+    if passwordValidator(password):
+        print("Your password is valid.")
+    else:
+        print("Your password must contain at least 8 characters, and a mix of letters and numbers.")
+
+if __name__ == "__main__":
+    main()
